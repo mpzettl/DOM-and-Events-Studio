@@ -17,7 +17,13 @@ window.addEventListener("load", function() {
             let background = document.getElementById("shuttleBackground");
             background.style.backgroundColor = "blue";
             event.stopPropagation();
-            document.getElementById("spaceShuttleHeight").innerHTML = 10000;
+
+
+            let height = Number(document.getElementById("spaceShuttleHeight").innerHTML);
+
+            height += 10000;
+            document.getElementById("spaceShuttleHeight").innerHTML = Number(height);
+
 
             event.stopPropagation();
         } else {
@@ -62,23 +68,63 @@ window.addEventListener("load", function() {
             event.stopPropagation();
         }
     });
+
+    let locationX = document.getElementById("rocket").style.top;
+    console.log(locationX);
     let up = document.getElementById("up");
     up.addEventListener("click", function(event) {
+        locationX = Number(locationX.replace("px", ""));
+        console.log(locationX);
+        locationX -= 10;
+        locationX = locationX + "px";
+        document.getElementById("rocket").style.top = locationX;
+
+        let height = Number(document.getElementById("spaceShuttleHeight").innerHTML);
+
+        height += 10000;
+        document.getElementById("spaceShuttleHeight").innerHTML = Number(height);
+
+        console.log('click up', locationX);
 
 
     });
     let down = document.getElementById("down");
     down.addEventListener("click", function(event) {
+        locationX = Number(locationX.replace("px", ""));
+        console.log(locationX);
+        locationX += 10;
+        locationX = locationX + "px";
+        document.getElementById("rocket").style.top = locationX;
+
+        let height = Number(document.getElementById("spaceShuttleHeight").innerHTML);
+
+        height -= 10000;
+        document.getElementById("spaceShuttleHeight").innerHTML = Number(height);
 
 
     });
+    let locationL = document.getElementById("rocket").style.left;
     let left = document.getElementById("left");
     left.addEventListener("click", function(event) {
+        console.log('click left', locationL);
+        locationL = Number(locationL.replace("px", ""));
+        locationL -= 10;
+        locationL = locationL + "px";
+        document.getElementById("rocket").style.left = locationL;
+
 
 
     });
+
     let right = document.getElementById("right");
     right.addEventListener("click", function(event) {
+        console.log('click right', locationL);
+
+        locationL = Number(locationL.replace("px", ""));
+        locationL += 10;
+        locationL = locationL + "px";
+        document.getElementById("rocket").style.left = locationL;
+
 
 
     });
